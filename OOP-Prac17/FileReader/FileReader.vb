@@ -12,8 +12,8 @@ Public Class FileReader
 
         postLocations.Columns.Add("locationID")
         postLocations.Columns.Add("locationName")
-        postNumbers.Columns.Add("postNumber")
         postNumbers.Columns.Add("locationID")
+        postNumbers.Columns.Add("postNumber")
 
         Dim x As String = My.Resources.Postnummerregister_ansi
         For Each line In x.Split(Environment.NewLine)
