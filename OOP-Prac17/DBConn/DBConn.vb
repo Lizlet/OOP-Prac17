@@ -10,21 +10,25 @@ Public Class DBConn
     Public Shared Sub Upload(postLocations As DataTable, postNumbers As DataTable)
         Try
             connection.Open()
-            Dim cmd As New MySqlCommand()
-            cmd.Connection = connection
-            uploadTable(cmd, postLocations, "post_locations", False)
-            uploadTable(cmd, postNumbers, "post_numbers", True)
+            uploadTable(postLocations, "post_locations", False)
+            uploadTable(postNumbers, "post_numbers", True)
         Catch ex As MySqlException
             Debug.WriteLine($"something went wrong: {ex.Message}")
         End Try
     End Sub
 
-    Private Shared Sub uploadTable(cmd As MySqlCommand, table As DataTable, tName As String, firstFieldIsAString As Boolean)
+    Private Shared Sub uploadTable(table As DataTable, tName As String, firstFieldIsAString As Boolean)
+        Dim cmd As New MySqlCommand()
         Dim sql As String = $"INSERT INTO `{tName}`(`{table.Columns(0).ColumnName}`, `{table.Columns(1).ColumnName}`) VALUES "
-        For Each row In table.Rows
-            sql += $"({row(table.Columns(0).ColumnName)}, '{row(table.Columns(1).ColumnName)}'),"
+
+        For i = 0 To table.Rows.Count - 1
+            sql += $"(@col1{i}, @col2{i}),"
+            cmd.Parameters.AddWithValue($"@col1{i}", table.Rows(i)(table.Columns(0).ColumnName))
+            cmd.Parameters.AddWithValue($"@col2{i}", table.Rows(i)(table.Columns(1).ColumnName))
         Next
+
         cmd.CommandText = sql.Substring(0, sql.Length - 1)
+        cmd.Connection = connection
         cmd.ExecuteNonQuery()
     End Sub
 
