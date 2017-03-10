@@ -70,6 +70,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to sondg.
+        '''</summary>
+        Friend ReadOnly Property dbn() As String
+            Get
+                Return ResourceManager.GetString("dbn", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 0001	OSLO	0301	OSLO	P
         '''0010	OSLO	0301	OSLO	B
         '''0015	OSLO	0301	OSLO	B
@@ -97,6 +106,33 @@ Namespace My.Resources
         Friend ReadOnly Property Postnummerregister_ansi() As String
             Get
                 Return ResourceManager.GetString("Postnummerregister_ansi", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 7ppasexr.
+        '''</summary>
+        Friend ReadOnly Property pwd() As String
+            Get
+                Return ResourceManager.GetString("pwd", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to mysql.stud.iie.ntnu.no.
+        '''</summary>
+        Friend ReadOnly Property server() As String
+            Get
+                Return ResourceManager.GetString("server", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to sondg.
+        '''</summary>
+        Friend ReadOnly Property uid() As String
+            Get
+                Return ResourceManager.GetString("uid", resourceCulture)
             End Get
         End Property
     End Module

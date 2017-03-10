@@ -1,11 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Namespace DBConn
     Public Class DBUpload
-        Private Shared server As String = "mysql.stud.iie.ntnu.no"
-        Private Shared dbn As String = "sondg"
-        Private Shared uid As String = "sondg"
-        Private Shared pwd As String = "7ppasexr"
-        Private Shared connString As String = $"Server={server}; Database={dbn}; Uid={uid}; Pwd={pwd};"
+        Private Shared connString As String = $"Server={My.Resources.server}; Database={My.Resources.dbn}; Uid={My.Resources.uid}; Pwd={My.Resources.pwd};"
         Private Shared connection As New MySqlConnection(connString)
 
         Public Shared Sub Upload(postLocations As DataTable, postNumbers As DataTable)
