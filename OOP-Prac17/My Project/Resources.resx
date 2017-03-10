@@ -136,4 +136,7 @@
   <data name="uid" xml:space="preserve">
     <value>sondg</value>
   </data>
+  <data name="searchQuery" xml:space="preserve">
+    <value>select postNumber as "post number", locationName as "location name" from post_numbers pn, post_locations pl where pn.locationID = pl.locationID and pl.locationName like @locationName</value>
+  </data>
 </root>

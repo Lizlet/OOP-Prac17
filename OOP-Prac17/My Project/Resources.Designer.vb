@@ -119,6 +119,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to select postNumber as &quot;post number&quot;, locationName as &quot;location name&quot; from post_numbers pn, post_locations pl where pn.locationID = pl.locationID and pl.locationName like @locationName.
+        '''</summary>
+        Friend ReadOnly Property searchQuery() As String
+            Get
+                Return ResourceManager.GetString("searchQuery", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to mysql.stud.iie.ntnu.no.
         '''</summary>
         Friend ReadOnly Property server() As String

@@ -9,8 +9,7 @@ Namespace DBConn
 
             Try
                 Dim dataAdapter As New MySqlDataAdapter
-                Dim sql As String = "select postNumber as ""post number"", locationName as ""location name"" from post_numbers pn, post_locations pl where pn.locationID = pl.locationID and pl.locationName like @locationName"
-                Dim cmd As New MySqlCommand(sql, connection)
+                Dim cmd As New MySqlCommand(My.Resources.searchQuery, connection)
                 cmd.Parameters.AddWithValue("@locationName", $"%{locationName}%")
 
                 connection.Open()
