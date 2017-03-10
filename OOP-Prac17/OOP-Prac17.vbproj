@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConn\DBSearch.vb" />
     <Compile Include="DBConn\DBUpload.vb" />
     <Compile Include="FileReader\FileReader.vb" />
     <Compile Include="Form1.vb">
