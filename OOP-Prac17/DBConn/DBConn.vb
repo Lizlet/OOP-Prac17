@@ -10,6 +10,7 @@ Public Class DBConn
     Public Shared Sub Upload(postLocations As DataTable, postNumbers As DataTable)
         Try
             connection.Open()
+            PrepDatabase()
             uploadTable(postLocations, "post_locations", False)
             uploadTable(postNumbers, "post_numbers", True)
         Catch ex As MySqlException
@@ -29,6 +30,11 @@ Public Class DBConn
 
         cmd.CommandText = sql.Substring(0, sql.Length - 1)
         cmd.Connection = connection
+        cmd.ExecuteNonQuery()
+    End Sub
+
+    Private Shared Sub PrepDatabase()
+        Dim cmd As New MySqlCommand(My.Resources.createTables, connection)
         cmd.ExecuteNonQuery()
     End Sub
 

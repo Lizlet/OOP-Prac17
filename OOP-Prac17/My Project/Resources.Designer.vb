@@ -61,6 +61,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to drop table if exists post_numbers;drop table if exists post_locations;create table post_locations (locationID int primary key,locationName varchar(25)) engine = innodb;create table post_numbers (postNumber char(5) primary key,locationID int,foreign key (locationID) references post_locations(locationID) on update cascade on delete restrict) engine = innodb;.
+        '''</summary>
+        Friend ReadOnly Property createTables() As String
+            Get
+                Return ResourceManager.GetString("createTables", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 0001	OSLO	0301	OSLO	P
         '''0010	OSLO	0301	OSLO	B
         '''0015	OSLO	0301	OSLO	B
