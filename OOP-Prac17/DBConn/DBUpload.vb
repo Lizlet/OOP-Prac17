@@ -16,6 +16,9 @@ Namespace DBConn
                 uploadTable(postNumbers, "post_numbers", True)
             Catch ex As MySqlException
                 Debug.WriteLine($"something went wrong: {ex.Message}")
+            Finally
+                connection.Close()
+                connection.Dispose()
             End Try
         End Sub
 
@@ -32,6 +35,7 @@ Namespace DBConn
             cmd.CommandText = sql.Substring(0, sql.Length - 1)
             cmd.Connection = connection
             cmd.ExecuteNonQuery()
+            cmd.Dispose()
         End Sub
 
         Private Shared Sub PrepDatabase()
