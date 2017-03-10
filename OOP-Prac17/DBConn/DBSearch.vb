@@ -8,8 +8,15 @@ Namespace DBConn
             Dim table As New DataTable
 
             Try
+                Dim dataAdapter As New MySqlDataAdapter
+                Dim sql As String = "select postNumber as ""post number"", locationName as ""location name"" from post_numbers pn, post_locations pl where pn.locationID = pl.locationID and pl.locationName like @locationName"
+                Dim cmd As New MySqlCommand(sql, connection)
+                cmd.Parameters.AddWithValue("@locationName", $"%{locationName}%")
+
                 connection.Open()
-                Dim sql As String = "select postNumber as ""post numbers in OSLO"" from post_numbers pn, post_locations pl where pn.locationID = pl.locationID and pl.locationName = ""OSLO"""
+                dataAdapter.SelectCommand = cmd
+
+                dataAdapter.Fill(table)
             Catch ex As Exception
                 Debug.WriteLine($"something went wrong: {ex.Message}")
             Finally
